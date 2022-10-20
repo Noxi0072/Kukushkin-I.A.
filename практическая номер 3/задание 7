@@ -1,0 +1,17 @@
+s = int(input())
+if (s%4==0 and s%100!=0) or s%400==0:
+    print('да')
+else:
+    print('нет')
+8)a = int(input())
+b = int(input())
+c = int(input())
+k = 0
+if a==b and b==c and a==c:
+    k=3
+else:
+    if a==b or a==c or c==b:
+        k=2
+    else:
+        k=0
+print(k)
