@@ -1,0 +1,8 @@
+"# -- coding: utf-8 --"
+n = int(input())
+x1 = 1
+x2 = 1
+for i in range(2,n + 1):
+    x = x1 * i
+    x2 += x1
+print(x2)
