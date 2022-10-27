@@ -1,0 +1,9 @@
+a = int(input())
+с = 0
+while str(a) != '0':
+    b = int(input())
+    if str(b) != '0':
+        if b > a:
+            с += 1
+    a = b
+print (с)
