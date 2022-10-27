@@ -1,0 +1,5 @@
+N = int(input())
+n = 2
+while N % n != 0:
+    n = n + 1
+print (n)
