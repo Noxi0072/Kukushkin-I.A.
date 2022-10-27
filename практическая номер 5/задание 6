@@ -1,0 +1,10 @@
+a = str(input())
+b = 0
+c = 0
+d = 0
+while a != '0':
+    c += 1
+    b += int(a)
+    d = b/c
+    a = str(input())
+print(d)
