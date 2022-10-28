@@ -1,0 +1,10 @@
+x = []
+i = 1
+for i in range(4):
+    x.append(int(input()))
+for i in range(4):
+    for b in range(i + 1, 4):
+        if x[i] == x[b]:
+            print("Одинаковые элементы: ", x[i])
+            print("Индекс одинаковых элементов: ", i, b)
+print(x)
