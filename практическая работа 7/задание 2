@@ -1,0 +1,8 @@
+x = []
+n = 8
+for i in range(n):
+    x.append(int(input()))
+for i in range(n):
+    while x[i] < 15:
+        x[i] *= 2
+print(x)
