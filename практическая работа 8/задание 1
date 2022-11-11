@@ -1,0 +1,14 @@
+def armstrong(k):
+    a = 0
+    n = str(k)
+    l = len(n)
+    for i in n:
+        a += int(i)**l
+        if a > k:
+            return 'не армстронг'
+    if a != k:
+        return 'не армстронг'
+    return 'армстронг'
+
+c = int(input("Введите число"))
+print(armstrong(c))
