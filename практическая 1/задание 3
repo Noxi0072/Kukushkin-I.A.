@@ -1,0 +1,9 @@
+# -*- coding: utf-8 -
+age = int(input())
+name = input()
+if name != 'Иван':
+        if age >= 16 and age <75:
+            print("Поздравляем вы поступили в ВГУИТ")
+        else:
+            print("Сначала нужно окончить школу!")
+            print("Сколько лет осталось учиться?")
