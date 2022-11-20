@@ -1,0 +1,47 @@
+with open('KukushkinIA_U224_vvod.txt', 'r+') as f:
+	line = f.readlines()
+	l = [element.replace ("\n", "").split() for element in line]
+import math
+n = len(l)
+m = len(l[0])
+a = l
+for i in range(n):
+	for k in range(m):
+		a[i][k] = int(a[i][k])
+	print()
+for i in range(m):
+	if i % 2 != 0:
+		mmin = min(a[i])
+		"""print('min элемент чётных строк', mmin)"""
+with open('KukushkinIA_U224_vivod.txt', 'a+', encoding='utf-8-sig') as f2:
+	f2.write('min элемент чётных строк')
+	f2.write('\n')
+	f2.write(str(mmin))
+	f2.write('\n')
+minn = float('inf')
+maxx = float('-inf')
+for i in range(m):
+	for k in range(n):
+		if a[i][k] < minn:
+			minn = a[i][k]
+	for j in range(n):
+		if a[i][j] > maxx:
+			maxx = a[i][j]
+for i in range(m):
+	for k in range(n):
+		if a[i][k] == maxx:
+			a[i][k] = minn
+		elif a[i][k] == minn:
+			a[i][k] = maxx
+with open('KukushkinIA_U224_vivod.txt', 'a+', encoding='utf-8-sig') as f2:
+	f2.write('min=')
+	f2.write(str(minn))
+	f2.write('\n')
+	f2.write('max=')
+	f2.write(str(maxx))
+	f2.write('\n')
+	for i in range(n):
+		for k in range(n):
+			f2.write(str(a[i][k]))
+			f2.write(' ')
+		f2.write('\n')
