@@ -1,0 +1,43 @@
+import requests 
+from tkinter import *
+from tkinter import scrolledtext
+
+def urlget():
+    repo = txt.get()
+
+    url = f"https://api.github.com/repos/%7Brepo%7D"
+    resp = requests.get(url).json()
+
+    try:
+        resp['company']
+        resp['email']
+    except KeyError:
+            resp['company'] = None
+            resp['email'] = None
+
+    with open("File.txt", "a+") as f:
+        f.write(f"'company': '{resp['company']}'\n")
+        f.write(f"'created_at': '{resp['created_at']}'\n")
+        f.write(f"'email': '{resp['email']}'\n")
+        f.write(f"'id': '{resp['id']}'\n")
+        f.write(f"'name': '{resp['name']}'\n")
+        f.write(f"'url': '{resp['url']}'\n")
+        f.write("\n")
+    with open("File.txt", "r+") as f1:
+        line = f1.read()
+        txt1.insert('1.0', line)
+
+okno = Tk()
+okno.title("GitHubRepos")
+okno.geometry('600x400')
+lbl = Label(okno, text="Введите имя пользователя и репозиторий через /")
+lbl1 = Label(okno, text="Например: apache/spark")
+lbl.grid(padx=150, pady=15)
+lbl1.grid(padx=150, pady=15)
+txt = Entry(okno, width=50, justify="center")
+txt.grid(padx=150, pady=15)
+btn = Button(okno, text="Нажать", command=urlget)
+btn.grid(padx=150, pady=15)
+txt1 = scrolledtext.ScrolledText(okno, height=10, width=50)
+txt1.grid(padx=100, pady=15)
+okno.mainloop()
