@@ -1,5 +1,8 @@
-N = int(input())
-n = 1
-while (2 ** n) <= N:
-    n += 1
-print(2 ** (n - 1),n - 1)
+def a():
+    N = int(input())
+    n = 1
+    while (2  n) <= N:
+        n += 1
+    print(2  (n - 1), n - 1)
+    return (" ")
+print(a())
