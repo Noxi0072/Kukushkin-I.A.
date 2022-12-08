@@ -1,3 +1,5 @@
-str = input()
-f = str[str.find('(') + 1: str.find(')') -1]
-print(f)
+def a():
+    str = input()
+    f = str[str.find('(') + 1: str.find(')') - 1]
+    return(f)
+print(a())
