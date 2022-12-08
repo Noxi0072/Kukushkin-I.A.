@@ -1,0 +1,22 @@
+print('Задача 12.3, блок А')
+
+def razvorot():
+    x = int(input('Введите число, чтобы закончить введите 0 '))  # Ввод чисел
+    if x != 0:       # Проверка на выход из рекурсии
+        razvorot()
+    print(x)         # Сам разворот
+razvorot()           # Рекурсия
+
+print('Задача 12.3, блок Б')
+
+def func():
+    number = int(input())  # Ввод чисел
+    if number != 0:        # Проверка на выход из рекурсии
+        print(number)      # Вывод 0
+    else:
+        return
+    number = int(input())  # Ввод чисел
+    if number == 0:        # Проверка на выход из рекурсии
+        return
+    func()                 # Рекурсия
+func()
