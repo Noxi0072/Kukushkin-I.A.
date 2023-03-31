@@ -1,0 +1,19 @@
+import java.util.Scanner;
+public class Main {
+
+
+    public static void main(String[] args) {
+        Scanner n = new Scanner(System.in);
+        int a = n.nextInt();
+        int r=0;
+        for(int i =1; i<=a;i++){
+            if(a%i==0){
+                r++;
+            }
+        }
+        if (r==2){
+            System.out.println("число простое ");}
+        else {
+            System.out.println("число составное ");}
+    }
+}
