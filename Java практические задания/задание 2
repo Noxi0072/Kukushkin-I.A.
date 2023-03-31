@@ -1,0 +1,23 @@
+import java.util.*;
+
+public class Git {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Для завершения введите значение отличное от 0 и 1");
+        var x = scan.nextInt();
+        int i = 0;
+        if (x < 2) {
+            i++;
+        }
+        while (x < 2){
+            x = scan.nextInt();
+            if (x == 1){
+                i++;
+            }
+
+        }
+        System.out.println("Количество работников: " + i);
+
+    }
+
+}
