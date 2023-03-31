@@ -1,0 +1,25 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args){
+        Scanner n = new Scanner(System.in);
+        String x = n.nextLine();
+        char z = n.next().charAt(0);
+        Main.Git(x, z);
+    }
+
+    public static int Git (String str, char ch) {
+        var i = 0;
+        var count = 0;
+        while (i < str.length()) {
+            if (str.charAt(i) == ch) {
+
+                count = count + 1;
+            }
+
+            i = i + 1;
+        }
+        System.out.println(count);
+        return count;
+
+    }
+}
