@@ -1,0 +1,22 @@
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] numbers = {5, 19, 6, 2, 8, 16, 12, 3, 10};
+
+        int maxIndex = 0;
+        for(int i = 1; i < numbers.length; i++) {
+            if(numbers[i] > numbers[maxIndex]) {
+                maxIndex = i;
+            }
+        }
+
+        int[] leftNumbers = Arrays.copyOfRange(numbers, 0, maxIndex); // копируем все числа до максимума
+        int[] rightNumbers = Arrays.copyOfRange(numbers, maxIndex + 1, numbers.length); // копируем все числа после максимума
+
+        System.out.println("Исходный массив: " + Arrays.toString(numbers));
+        System.out.println("Максимальное число: " + numbers[maxIndex]);
+        System.out.println("Числа до максимального числа: " + Arrays.toString(leftNumbers));
+        System.out.println("Числа после максимального числа: " + Arrays.toString(rightNumbers));
+    }
+}
