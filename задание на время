@@ -1,6 +1,0 @@
-# -*- coding: utf-8 -*-
-second=int(input())
-print("дни" - second/(60*60*24))
-print("часы" - second/(60*60)) 
-print("минуты" - second/(60)) 
-print("секунды" -  second)
