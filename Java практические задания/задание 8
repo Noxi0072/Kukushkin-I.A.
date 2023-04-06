@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+import static java.lang.Math.*;
+
+
+public class Main {
+    private static final String tregyes = "треугольник существует";
+    private static final String tregnot = "треугольник не существует";
+    public static void main(String[] args){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Введите значение:");
+        double a = scan.nextDouble();
+        double b = scan.nextDouble();
+        double c = scan.nextDouble();
+
+        if ((a < (c + b) && c < (a + b) && b < (c + a))) {
+            double cosA = (b * b + c * c - a * a) / (2 * b *c);
+            double cosB = (a * a + c * c - b * b) / (2 * a * c);
+            double cosC = (a * a + b * b - c * c) / (2 * a * b);
+            double maxCos = Math.max(cosA,Math.max(cosB,cosC));
+            double maxAngele = Math.toDegrees(Math.acos(maxCos));
+            System.out.println(tregyes);
+            System.out.println("Наибольший внешний угол:" + maxAngele + " " + "градусов");
+        } else {
+            System.out.println(tregnot);
+        }
+    }
+}
