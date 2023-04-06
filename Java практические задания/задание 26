@@ -1,0 +1,35 @@
+import  java.util.Scanner;
+public class Main {
+    public static String Palindrome(String s) {
+        int n = s.length();
+        boolean[][] matrix = new boolean[n][n];
+        String Palindrome = s.substring(0, 1);
+        for (int i = 0; i < n; i++) {
+            matrix[i][i] = true;
+            if (i < n-1 && s.charAt(i) == s.charAt(i+1)) {
+                matrix[i][i+1] = true;
+                Palindrome = s.substring(i, i+2);
+            }
+        }
+        for (int length = 3; length <= n; length++) {
+            for (int i = 0; i < n - length + 1; i++) {
+                int j = i + length - 1;
+                if (s.charAt(i) == s.charAt(j) && matrix[i+1][j-1]) {
+                    matrix[i][j] = true;
+                    if (length > Palindrome.length()) {
+                        Palindrome = s.substring(i, j+1);
+                    }
+                }
+            }
+        }
+        return Palindrome;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Введите палиндром:");
+        Scanner scan = new Scanner(System.in);
+        String s = scan.nextLine();
+
+        System.out.println(Palindrome(s) + "-" + Palindrome(s).length());
+    }
+}
