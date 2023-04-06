@@ -11,8 +11,8 @@ public class Main {
             }
         }
 
-        int[] leftNumbers = Arrays.copyOfRange(numbers, 0, maxIndex); // копируем все числа до максимума
-        int[] rightNumbers = Arrays.copyOfRange(numbers, maxIndex + 1, numbers.length); // копируем все числа после максимума
+        int[] leftNumbers = Arrays.copyOfRange(numbers, 0, maxIndex); 
+        int[] rightNumbers = Arrays.copyOfRange(numbers, maxIndex + 1, numbers.length); 
 
         System.out.println("Исходный массив: " + Arrays.toString(numbers));
         System.out.println("Максимальное число: " + numbers[maxIndex]);
