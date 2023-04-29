@@ -1,0 +1,54 @@
+import java.util.ArrayList;
+
+public class Main {
+    public static int chooseBestSum(int maxDistance, int numCities, ArrayList<Integer> distances) {
+        int maxSum = -1;
+
+        ArrayList<Integer> indices = new ArrayList<>();
+        for (int i = 0; i < distances.size(); i++) {
+            indices.add(i);
+        }
+
+        ArrayList<ArrayList<Integer>> combinations = new ArrayList<>();
+        generateCombinations(combinations, indices, new ArrayList<Integer>(), numCities, 0);
+
+        for (ArrayList<Integer> combination : combinations) {
+            int sum = 0;
+            for (int index : combination) {
+                sum += distances.get(index);
+            }
+            if (sum <= maxDistance && sum > maxSum) {
+                maxSum = sum;
+            }
+        }
+        return maxSum;
+    }
+
+    private static void generateCombinations(ArrayList<ArrayList<Integer>> result, ArrayList<Integer> indices, ArrayList<Integer> currentCombination, int size, int startIndex) {
+        if (currentCombination.size() == size) {
+            result.add(new ArrayList<>(currentCombination));
+            return;
+        }
+
+        for (int i = startIndex; i < indices.size(); i++) {
+            currentCombination.add(indices.get(i));
+            generateCombinations(result, indices, currentCombination, size, i + 1);
+            currentCombination.remove(currentCombination.size() - 1);
+        }
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Integer> distances = new ArrayList<>();
+        distances.add(50);
+        distances.add(55);
+        distances.add(57);
+        distances.add(58);
+        distances.add(60);
+
+        int maxDistance = 175;
+        int numCities = 3;
+
+        int maxSum = chooseBestSum(maxDistance, numCities, distances);
+        System.out.println(maxSum);
+    }
+}
