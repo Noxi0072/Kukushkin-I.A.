@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int n = scan.nextInt();
+
+        int counter = 0;
+
+        while (n > 0) {
+            if (n % 2 == 0) {
+                n /= 2;
+            } else {
+                n--;
+            }
+            counter++;
+        }
+
+        String win = (counter % 2 == 0) ? "Таня" : "Саша";
+        System.out.println("Победитель: " + win);
+    }
+}
