@@ -1,0 +1,24 @@
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        String input = "56 65 74 100 99 68 86 180 90";
+
+        String[] weights = input.split(" ");
+
+        Arrays.sort(weights, (a, b) -> {
+            int sumA = 0, sumB = 0;
+            for(char c : a.toCharArray()) {
+                sumA += Character.getNumericValue(c);
+            }
+            for(char c : b.toCharArray()) {
+                sumB += Character.getNumericValue(c);
+            }
+            return Integer.compare(sumA, sumB);
+        });
+
+        for(String weight : weights) {
+            System.out.print(weight + " ");
+        }
+    }
+}
