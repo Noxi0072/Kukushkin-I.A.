@@ -1,0 +1,63 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int[] secretCode = generateCode(); // Загадываем код и сохраняем его в переменной
+
+        int attempts = 0;
+        while (attempts < 20) {
+            System.out.println("Попытка #" + (attempts + 1));
+            int[] guess = getGuess(input); // Запрашиваем у пользователя его догадку и сохраняем её в переменной
+            int[] result = checkGuess(secretCode, guess); // Проверяем догадку и сохраняем результат в переменной
+            if (result[0] == 4) { // Если все числа совпали, то выход из цикла
+                System.out.println("Ура! Вы угадали!");
+                break;
+            } else { // Иначе выводим количество совпадений и просим попытаться ещё раз
+                System.out.println("Совпадений: " + result[0]);
+                attempts++;
+            }
+        }
+
+        if (attempts == 20) { // Если пользователь не угадал за 20 попыток, выводим сообщение о проигрыше
+            System.out.println("Вы проиграли. Загаданный код был:");
+            for (int x : secretCode) {
+                System.out.print(x);
+            }
+        }
+    }
+
+    public static int[] generateCode() { // Метод для генерации случайного 4-значного кода
+        int[] code = new int[4];
+        for (int i = 0; i < code.length; i++) {
+            code[i] = (int) (Math.random() * 10);
+        }
+        return code;
+    }
+
+    public static int[] getGuess(Scanner input) { // Метод для получения догадки пользователя
+        int[] guess = new int[4];
+        for (int i = 0; i < guess.length; i++) {
+            System.out.print("Введите число #" + (i + 1) + ": ");
+            guess[i] = input.nextInt();
+        }
+        return guess;
+    }
+
+    public static int[] checkGuess(int[] secretCode, int[] guess) { // Метод для проверки догадки
+        int[] result = new int[2];
+        for (int i = 0; i < secretCode.length; i++) {
+            if (secretCode[i] == guess[i]) { // Если число совпадает на данной позиции, увеличиваем счетчик совпадений
+                result[0]++;
+            } else { // Иначе сравниваем его со всеми числами загаданного кода и если находим совпадение, увеличиваем счетчик близости
+                for (int j = 0; j < secretCode.length; j++) {
+                    if (secretCode[j] == guess[i]) {
+                        result[1]++;
+                        break;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+}
