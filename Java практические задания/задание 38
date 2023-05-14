@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите текст:");
+        String text = scanner.nextLine();
+        String[] sentences;
+        sentences = text.split("(?<=[.!?])\\s+");
+        for (String sentence : sentences) {
+            String[] words = sentence.split("\\s+");
+            StringBuilder result = new StringBuilder();
+            for (String word : words) {
+                StringBuilder modifiedWord = new StringBuilder(word.substring(1));
+                modifiedWord.append(word.charAt(0));
+                modifiedWord.append("ауч");
+                result.append(modifiedWord).append(" ");
+            }
+            System.out.print(result);
+        }
+    }
+}
