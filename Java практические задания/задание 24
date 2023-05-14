@@ -1,0 +1,36 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String s = scan.nextLine();
+        String[] num = s.split(" ");
+        int sum = 0;
+        int y = Integer.parseInt(num[0]);
+        int y1 = Integer.parseInt(num[1]);
+        for(int x1 = y; x1 <= y1; x1++){
+            List<Integer> num2 = new ArrayList<Integer>();
+            for(int i = 2; i < num.length; i++){
+                int x = Integer.parseInt(num[i].trim());
+                if(x1 % x == 0){
+                    String str = "" + x;
+                    if(num[i].equals(str)){
+                        num2.add(x1);
+                    }
+                }
+            }
+            Set<Integer> set = new HashSet<Integer>(num2);
+            int result = 0;
+            for (Integer integer : set) {
+                int intValue = integer.intValue();
+                result += intValue;
+            }
+            sum += result;
+        }
+        System.out.println(sum);
+    }
+}
