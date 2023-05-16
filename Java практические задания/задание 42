@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Введите начало интервала: ");
+        int start = scanner.nextInt();
+
+        System.out.print("Введите конец интервала: ");
+        int end = scanner.nextInt();
+
+        int count = countNum(start, end);
+
+        System.out.println("Количество чисел между " + start + " и " + end + " равно " + count);
+    }
+
+    public static int countNum(int start, int end) {
+        int count = 0;
+
+        for (int i = start + 1; i < end; i++) {
+            count++;
+        }
+
+        return count;
+    }
+}
