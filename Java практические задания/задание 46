@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите количество лет в римской системе: ");
+        String rYears = scanner.nextLine().toUpperCase();
+        int arabYears = convertToArabic(rYears);
+        System.out.println("Количество лет в арабской системе: " + arabYears);
+    }
+
+    public static int convertToArabic(String rYears) {
+        int arabYears = 0;
+        int prevNumber = 0;
+        for (int i = rYears.length() - 1; i >= 0; i--) {
+            int currentNumber = getRNumberValue(rYears.charAt(i));
+            if (currentNumber < prevNumber) {
+                arabYears -= currentNumber;
+            } else {
+                arabYears += currentNumber;
+            }
+            prevNumber = currentNumber;
+        }
+        return arabYears;
+    }
+
+    public static int getRNumberValue(char rNumber) {
+        switch (rNumber) {
+            case 'M':
+                return 1000;
+            case 'D':
+                return 500;
+            case 'C':
+                return 100;
+            case 'L':
+                return 50;
+            case 'X':
+                return 10;
+            case 'V':
+                return 5;
+            case 'I':
+                return 1;
+            default:
+                return 0;
+        }
+    }
+}
