@@ -1,11 +1,13 @@
 package ru.Vsuet.mtx;
 
-import java.util.Stack;
+import java.util.*;
 
 public class Calculate {
+
     private boolean isOperator(char c) {
         return c == '+' || c == '-' || c == '*' || c == '/' || c == '^' || c == '|' || c == '%';
     }
+    
     private double executeOperation(double num1, double num2, char operator) {
         switch (operator) {
             case '+':
@@ -20,10 +22,13 @@ public class Calculate {
                 return num1 % num2;
             case '^':
                 return Math.pow(num1, num2);
+            case '|':
+                return Math.sqrt(num1 * num1 + num2 * num2);
             default:
                 throw new IllegalArgumentException("Неверный оператор: " + operator);
         }
     }
+
     public double evaluateExpression(String expression) {
         Stack<Double> numbers = new Stack<>();
         Stack<Character> operators = new Stack<>();
@@ -72,6 +77,7 @@ public class Calculate {
         }
         return numbers.pop();
     }
+
     private int getOperatorPriority(char operator) {
         switch (operator) {
             case '+':
