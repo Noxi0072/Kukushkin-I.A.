@@ -10,19 +10,16 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.print("Введите математическое выражение (или 'выход' для завершения): ");
+            System.out.print("Введите математическое выражение (или 'quit' для завершения): ");
             String input = scanner.nextLine();
-
-            if (input.equalsIgnoreCase("выход")) {
+            if (input.equalsIgnoreCase("quit")) {
                 break;
             }
-
             double result = calculator.evaluateExpression(input);
             System.out.println("Результат: " + result);
 
             historyManager.saveExpression(input, result);
         }
-
         List<String> history = historyManager.loadHistory();
         System.out.println("История вычислений:");
         for (String entry : history) {
