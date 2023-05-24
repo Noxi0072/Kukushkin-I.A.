@@ -4,10 +4,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HistoryManager {
+public class History {
     private static final String FILE_NAME = "src/ru/Vsuet/mtx/history.csv";
-
-    // Метод для сохранения выражения и его результат в файл
     public void saveExpression(String expression, double result) {
         try (FileWriter writer = new FileWriter(FILE_NAME, true)) {
             writer.append(expression);
@@ -18,8 +16,6 @@ public class HistoryManager {
             System.err.println("Ошибка при сохранении истории: " + e.getMessage());
         }
     }
-
-    // Метод для загрузки истории вычислений из файла
     public List<String> loadHistory() {
         List<String> history = new ArrayList<>();
 
