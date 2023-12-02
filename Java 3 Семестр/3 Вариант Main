@@ -2,54 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-class Student {
-    private String name;
-    private List<String> tasks;
-
-    public Student(String name) {
-        this.name = name;
-        this.tasks = new ArrayList<>();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public List<String> getTasks() {
-        return tasks;
-    }
-
-    public void addTask(String task) {
-        tasks.add(task);
-    }
-}
-
-class Group {
-    private String name;
-    private List<Student> students;
-
-    public Group(String name) {
-        this.name = name;
-        this.students = new ArrayList<>();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public List<Student> getStudents() {
-        return students;
-    }
-
-    public void addStudent(Student student) {
-        students.add(student);
-    }
-
-    public void removeStudent(Student student) {
-        students.remove(student);
-    }
-}
-
 public class Main {
     private static List<Group> group = new ArrayList<>();
 
