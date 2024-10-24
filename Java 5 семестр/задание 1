@@ -1,0 +1,93 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+
+    public static void main(String[] args) {
+        List<Toy> toys = new ArrayList<>();
+
+        toys.add(ToyFactory.createToy("ball", "Red", 5));
+        toys.add(ToyFactory.createToy("doll", "Pink", 10));
+        toys.add(ToyFactory.createToy("constructor", "Blue", 20));
+
+        for (Toy toy : toys) {
+            System.out.println(toy);
+            toy.play();
+        }
+    }
+}
+
+abstract class Toy {
+    protected String name;
+    protected String color;
+    protected int price;
+
+    public Toy(String name, String color, int price) {
+        this.name = name;
+        this.color = color;
+        this.price = price;
+    }
+
+    public abstract void play();
+
+    @Override
+    public String toString() {
+        return "Toy{" +
+                "name='" + name + '\'' +
+                ", color='" + color + '\'' +
+                ", price=" + price +
+                '}';
+    }
+}
+
+class Ball extends Toy {
+
+    public Ball(String color, int price) {
+        super("Ball", color, price);
+    }
+
+    @Override
+    public void play() {
+        System.out.println("The " + color + " ball bounces!");
+    }
+}
+
+class Doll extends Toy {
+
+    public Doll(String color, int price) {
+        super("Doll", color, price);
+    }
+
+    @Override
+    public void play() {
+        System.out.println("The " + color + " doll is smiling!");
+    }
+}
+
+class Constructor extends Toy {
+
+    public Constructor(String color, int price) {
+        super("Constructor", color, price);
+    }
+
+    @Override
+    public void play() {
+        System.out.println("The " + color + " constructor is used to build amazing things!");
+    }
+}
+
+class ToyFactory {
+
+    public static Toy createToy(String type, String color, int price) {
+        switch (type) {
+            case "ball":
+                return new Ball(color, price);
+            case "doll":
+                return new Doll(color, price);
+            case "constructor":
+                return new Constructor(color, price);
+            default:
+                return null;
+        }
+    }
+}
