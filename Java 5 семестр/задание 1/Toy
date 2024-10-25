@@ -1,0 +1,22 @@
+abstract class Toy {
+    protected String name;
+    protected String color;
+    protected int price;
+
+    public Toy(String name, String color, int price) {
+        this.name = name;
+        this.color = color;
+        this.price = price;
+    }
+
+    public abstract void play();
+
+    @Override
+    public String toString() {
+        return "Toy{" +
+                "name='" + name + '\'' +
+                ", color='" + color + '\'' +
+                ", price=" + price +
+                '}';
+    }
+}
