@@ -1,0 +1,17 @@
+class HyperVVM implements VirtualMachine {
+    private VirtualMachineBridge bridge;
+
+    public HyperVVM(VirtualMachineBridge bridge) {
+        this.bridge = bridge;
+    }
+
+    @Override
+    public void start() {
+        bridge.startVM();
+    }
+
+    @Override
+    public void stop() {
+        bridge.stopVM();
+    }
+}
