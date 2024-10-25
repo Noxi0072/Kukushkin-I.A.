@@ -1,0 +1,15 @@
+class ToyFactory {
+
+    public static Toy createToy(String type, String color, int price) {
+        switch (type) {
+            case "ball":
+                return new Ball(color, price);
+            case "doll":
+                return new Doll(color, price);
+            case "constructor":
+                return new Constructor(color, price);
+            default:
+                return null;
+        }
+    }
+}
