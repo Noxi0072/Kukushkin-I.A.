@@ -1,0 +1,17 @@
+class VirtualBoxVM implements VirtualMachine {
+    private VirtualMachineBridge bridge;
+
+    public VirtualBoxVM(VirtualMachineBridge bridge) {
+        this.bridge = bridge;
+    }
+
+    @Override
+    public void start() {
+        bridge.startVM();
+    }
+
+    @Override
+    public void stop() {
+        bridge.stopVM();
+    }
+}
