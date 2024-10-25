@@ -1,0 +1,23 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+
+    public static void main(String[] args) {
+        List<Aircraft> aircrafts = new ArrayList<>();
+
+        AircraftFactory planeFactory = new PlaneFactory();
+        aircrafts.add(planeFactory.createAircraft("Boeing 747", 1000, 500));
+
+        AircraftFactory helicopterFactory = new HelicopterFactory();
+        aircrafts.add(helicopterFactory.createAircraft("Mi-8", 500, 200));
+
+        AircraftFactory airshipFactory = new AirshipFactory();
+        aircrafts.add(airshipFactory.createAircraft("Hindenburg", 1500, 1000));
+
+        for (Aircraft aircraft : aircrafts) {
+            System.out.println(aircraft);
+            aircraft.fly();
+        }
+    }
+}
