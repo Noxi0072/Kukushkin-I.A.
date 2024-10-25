@@ -1,0 +1,11 @@
+class Ball extends Toy {
+
+    public Ball(String color, int price) {
+        super("Ball", color, price);
+    }
+
+    @Override
+    public void play() {
+        System.out.println("The " + color + " ball bounces!");
+    }
+}
