@@ -1,0 +1,11 @@
+class VirtualBoxImplementation implements VirtualMachineImplementation {
+    @Override
+    public void startVM() {
+        System.out.println("Starting VirtualBox virtual machine...");
+    }
+
+    @Override
+    public void stopVM() {
+        System.out.println("Stopping VirtualBox virtual machine...");
+    }
+}
