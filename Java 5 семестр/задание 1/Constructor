@@ -1,0 +1,11 @@
+class Constructor extends Toy {
+
+    public Constructor(String color, int price) {
+        super("Constructor", color, price);
+    }
+
+    @Override
+    public void play() {
+        System.out.println("The " + color + " constructor is used to build amazing things!");
+    }
+}
