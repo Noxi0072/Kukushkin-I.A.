@@ -1,0 +1,11 @@
+class VMwareImplementation implements VirtualMachineImplementation {
+    @Override
+    public void startVM() {
+        System.out.println("Starting VMware virtual machine...");
+    }
+
+    @Override
+    public void stopVM() {
+        System.out.println("Stopping VMware virtual machine...");
+    }
+}
