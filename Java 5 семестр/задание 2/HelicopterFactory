@@ -1,0 +1,7 @@
+class HelicopterFactory extends AircraftFactory {
+
+    @Override
+    public Aircraft createAircraft(String model, int maxSpeed, int maxAltitude) {
+        return new Helicopter(model, maxSpeed, maxAltitude);
+    }
+}
