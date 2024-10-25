@@ -1,0 +1,17 @@
+class VMwareVM implements VirtualMachine {
+    private VirtualMachineBridge bridge;
+
+    public VMwareVM(VirtualMachineBridge bridge) {
+        this.bridge = bridge;
+    }
+
+    @Override
+    public void start() {
+        bridge.startVM();
+    }
+
+    @Override
+    public void stop() {
+        bridge.stopVM();
+    }
+}
