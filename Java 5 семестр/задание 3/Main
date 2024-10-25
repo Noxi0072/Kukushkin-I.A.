@@ -1,0 +1,34 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        VirtualMachineBridge bridge = new VirtualMachineBridge();
+
+
+        VirtualMachine vmware = new VMwareVM(bridge);
+        VirtualMachine hyperv = new HyperVVM(bridge);
+        VirtualMachine virtualbox = new VirtualBoxVM(bridge);
+
+
+        bridge.setImplementation(new VMwareImplementation());
+        vmware.start();
+        vmware.stop();
+
+        bridge.setImplementation(new HyperVImplementation());
+        hyperv.start();
+        hyperv.stop();
+
+        bridge.setImplementation(new VirtualBoxImplementation());
+        virtualbox.start();
+        virtualbox.stop();
+    }
+}
+
+
+interface VirtualMachine {
+    void start();
+    void stop();
+}
