@@ -1,0 +1,22 @@
+abstract class Aircraft {
+    protected String model;
+    protected int maxSpeed;
+    protected int maxAltitude;
+
+    public Aircraft(String model, int maxSpeed, int maxAltitude) {
+        this.model = model;
+        this.maxSpeed = maxSpeed;
+        this.maxAltitude = maxAltitude;
+    }
+
+    public abstract void fly();
+
+    @Override
+    public String toString() {
+        return "Aircraft{" +
+                "model='" + model + '\'' +
+                ", maxSpeed=" + maxSpeed +
+                ", maxAltitude=" + maxAltitude +
+                '}';
+    }
+}
