@@ -1,0 +1,11 @@
+class Plane extends Aircraft {
+
+    public Plane(String model, int maxSpeed, int maxAltitude) {
+        super(model, maxSpeed, maxAltitude);
+    }
+
+    @Override
+    public void fly() {
+        System.out.println(model + " is flying at high altitude!");
+    }
+}
