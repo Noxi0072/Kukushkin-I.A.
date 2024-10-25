@@ -1,0 +1,11 @@
+class Helicopter extends Aircraft {
+
+    public Helicopter(String model, int maxSpeed, int maxAltitude) {
+        super(model, maxSpeed, maxAltitude);
+    }
+
+    @Override
+    public void fly() {
+        System.out.println(model + " is hovering in the air!");
+    }
+}
