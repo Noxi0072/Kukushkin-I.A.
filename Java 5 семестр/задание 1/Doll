@@ -1,0 +1,11 @@
+class Doll extends Toy {
+
+    public Doll(String color, int price) {
+        super("Doll", color, price);
+    }
+
+    @Override
+    public void play() {
+        System.out.println("The " + color + " doll is smiling!");
+    }
+}
