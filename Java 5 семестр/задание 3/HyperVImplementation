@@ -1,0 +1,11 @@
+class HyperVImplementation implements VirtualMachineImplementation {
+    @Override
+    public void startVM() {
+        System.out.println("Starting Hyper-V virtual machine...");
+    }
+
+    @Override
+    public void stopVM() {
+        System.out.println("Stopping Hyper-V virtual machine...");
+    }
+}
