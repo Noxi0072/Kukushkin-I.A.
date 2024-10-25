@@ -1,0 +1,21 @@
+class VirtualMachineBridge {
+    private VirtualMachineImplementation implementation;
+
+    public void setImplementation(VirtualMachineImplementation implementation) {
+        this.implementation = implementation;
+    }
+
+    public void startVM() {
+        implementation.startVM();
+    }
+
+    public void stopVM() {
+        implementation.stopVM();
+    }
+}
+
+
+interface VirtualMachineImplementation {
+    void startVM();
+    void stopVM();
+}
