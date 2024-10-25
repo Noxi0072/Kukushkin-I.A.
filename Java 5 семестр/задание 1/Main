@@ -1,0 +1,18 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+
+    public static void main(String[] args) {
+        List<Toy> toys = new ArrayList<>();
+
+        toys.add(ToyFactory.createToy("ball", "Red", 5));
+        toys.add(ToyFactory.createToy("doll", "Pink", 10));
+        toys.add(ToyFactory.createToy("constructor", "Blue", 20));
+
+        for (Toy toy : toys) {
+            System.out.println(toy);
+            toy.play();
+        }
+    }
+}
