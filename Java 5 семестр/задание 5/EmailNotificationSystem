@@ -1,0 +1,44 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class EmailNotificationSystem {
+
+    private Map<String, Subscriber> subscribers = new HashMap<>();
+
+    public void subscribe(String email, Subscriber subscriber) {
+        subscribers.put(email, subscriber);
+    }
+
+    public void unsubscribe(String email) {
+        subscribers.remove(email);
+    }
+
+    public void notifyDelivery(String email) {
+        if (subscribers.containsKey(email)) {
+            subscribers.get(email).onEmailDelivered(email);
+        }
+    }
+
+    public void notifyError(String email, String error) {
+        if (subscribers.containsKey(email)) {
+            subscribers.get(email).onEmailError(email, error);
+        }
+    }
+
+    public static void main(String[] args) {
+        EmailNotificationSystem system = new EmailNotificationSystem();
+
+        
+        system.subscribe("sender1@example.com", new ConsoleSubscriber());
+        system.subscribe("sender2@example.com", new EmailSubscriber("sender2@example.com"));
+
+        
+        system.notifyDelivery("sender1@example.com");
+        system.notifyError("sender2@example.com", "Error sending email");
+    }
+}
+
+interface Subscriber {
+    void onEmailDelivered(String email);
+    void onEmailError(String email, String error);
+}
