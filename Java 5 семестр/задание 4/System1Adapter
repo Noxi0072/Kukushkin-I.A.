@@ -1,0 +1,20 @@
+class System1Adapter extends SmartHomeAdapter implements SmartHome {
+    private System1API system1API = new System1API();
+
+    @Override
+    public void turnOnLight(String room) {
+        system1API.switchOnLight(room);
+    }
+
+    @Override
+    public void turnOffLight(String room) {
+        system1API.switchOffLight(room);
+    }
+
+    @Override
+    public void setTemperature(int temperature, String room) {
+        // Преобразование команд к формату System1
+        system1API.setThermostatTemperature(temperature, room);
+    }
+
+}
