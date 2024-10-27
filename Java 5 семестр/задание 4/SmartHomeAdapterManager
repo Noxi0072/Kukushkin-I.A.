@@ -1,0 +1,11 @@
+class SmartHomeAdapterManager {
+    private Map<String, SmartHomeAdapter> adapters = new HashMap<>();
+
+    public void registerAdapter(String systemName, SmartHomeAdapter adapter) {
+        adapters.put(systemName, adapter);
+    }
+
+    public SmartHomeAdapter getAdapter(String systemName) {
+        return adapters.get(systemName);
+    }
+}
