@@ -1,0 +1,11 @@
+class ConsoleSubscriber implements Subscriber {
+    @Override
+    public void onEmailDelivered(String email) {
+        System.out.println("Email delivered to " + email);
+    }
+
+    @Override
+    public void onEmailError(String email, String error) {
+        System.out.println("Error sending email to " + email + ": " + error);
+    }
+}
