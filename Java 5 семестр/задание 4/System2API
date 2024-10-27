@@ -1,0 +1,13 @@
+class System2API {
+    public void activateLight(String room) {
+        System.out.println("Включаем свет в " + room + " (System2)");
+    }
+
+    public void deactivateLight(String room) {
+        System.out.println("Выключаем свет в " + room + " (System2)");
+    }
+
+    public void adjustTemperature(int temperature, String room) {
+        System.out.println("Устанавливаем температуру " + temperature + " в " + room + " (System2)");
+    }
+}
