@@ -1,0 +1,19 @@
+class EmailSubscriber implements Subscriber {
+    private String email;
+
+    public EmailSubscriber(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public void onEmailDelivered(String email) {
+
+        System.out.println("Sending email notification about delivery to " + email);
+    }
+
+    @Override
+    public void onEmailError(String email, String error) {
+
+        System.out.println("Sending email notification about error to " + email);
+    }
+}
