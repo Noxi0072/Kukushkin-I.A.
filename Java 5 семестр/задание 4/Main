@@ -1,0 +1,30 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main {
+    public static void main(String[] args) {
+        SmartHomeAdapterManager adapterManager = new SmartHomeAdapterManager();
+
+        adapterManager.registerAdapter("System1", new System1Adapter());
+        adapterManager.registerAdapter("System2", new System2Adapter());
+
+        SmartHomeAdapter system1Adapter = adapterManager.getAdapter("System1");
+        SmartHomeAdapter system2Adapter = adapterManager.getAdapter("System2");
+
+        system1Adapter.turnOnLight("Гостиная");
+        system2Adapter.setTemperature(22, "Спальня");
+
+     
+    }
+}
+
+
+interface SmartHome {
+    void turnOnLight(String room);
+
+    void turnOffLight(String room);
+
+    void setTemperature(int temperature, String room);
+
+  
+}
