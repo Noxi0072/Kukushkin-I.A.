@@ -1,0 +1,22 @@
+class System2Adapter extends SmartHomeAdapter implements SmartHome {
+    private System2API system2API = new System2API();
+
+    @Override
+    public void turnOnLight(String room) {
+
+        system2API.activateLight(room);
+    }
+
+    @Override
+    public void turnOffLight(String room) {
+        system2API.deactivateLight(room);
+    }
+
+    @Override
+    public void setTemperature(int temperature, String room) {
+        system2API.adjustTemperature(temperature, room);
+    }
+
+
+}
+
