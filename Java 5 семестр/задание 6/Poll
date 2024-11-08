@@ -1,0 +1,11 @@
+class Poll extends Survey {
+    public Poll(String title, List<String> questions) {
+        super(title, questions);
+    }
+
+    @Override
+    protected void displayQuestions() {
+        System.out.println("Вопросы опроса:");
+        collectAnswers(); 
+    }
+}
