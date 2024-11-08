@@ -1,0 +1,29 @@
+abstract class Survey {
+    private String title;
+    protected List<String> questions;
+
+    public Survey(String title, List<String> questions) {
+        this.title = title;
+        this.questions = questions;
+    }
+    public final void display() {
+        System.out.println("Название опроса: " + title);
+        displayQuestions();  // Вызываем абстрактный метод
+        displayFooter();     // Вызываем общий метод
+    }
+
+    protected abstract void displayQuestions(); 
+
+    protected void displayFooter() {
+        System.out.println("Спасибо за участие!");
+    }
+
+    protected void collectAnswers() {
+        Scanner scanner = new Scanner(System.in);
+        for (String question : questions) {
+            System.out.print(question + " ");
+            String answer = scanner.nextLine();
+            System.out.println("Ваш ответ: " + answer);
+        }
+    }
+}
