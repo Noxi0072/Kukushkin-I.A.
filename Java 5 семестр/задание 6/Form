@@ -1,0 +1,11 @@
+class Form extends Survey {
+    public Form(String title, List<String> questions) {
+        super(title, questions);
+    }
+
+    @Override
+    protected void displayQuestions() {
+        System.out.println("Вопросы анкеты:");
+        collectAnswers(); 
+    }
+}
