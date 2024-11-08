@@ -1,0 +1,14 @@
+class SurveyManager {
+    private List<Survey> surveys = new ArrayList<>();
+
+    public void addSurvey(Survey survey) {
+        surveys.add(survey);
+    }
+
+    public void displaySurveys() {
+        for (Survey survey : surveys) {
+            survey.display();
+            System.out.println();
+        }
+    }
+}
