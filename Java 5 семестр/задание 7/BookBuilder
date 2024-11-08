@@ -1,0 +1,30 @@
+class BookBuilder {
+    String title;
+    String author;
+    String genre;
+    int pages;
+
+    public BookBuilder setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public BookBuilder setAuthor(String author) {
+        this.author = author;
+        return this;
+    }
+
+    public BookBuilder setGenre(String genre) {
+        this.genre = genre;
+        return this;
+    }
+
+    public BookBuilder setPages(int pages) {
+        this.pages = pages;
+        return this;
+    }
+
+    public Book build() {
+        return new Book(this);
+    }
+}
