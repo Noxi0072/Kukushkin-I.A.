@@ -1,0 +1,20 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        SurveyManager manager = new SurveyManager();
+
+        Survey poll = new Poll("Опрос о любимой игре", Arrays.asList("Какая ваша любимая игра?", "Вы играли в ведбмак 3?"));
+        Survey test = new Test("Тест по информатике", Arrays.asList("Что такое бит?", "Расшифруйте аббревиатуру ПК."));
+        Survey form = new Form("Анкета ВГУИТ", Arrays.asList("Откуда вы узнали о нас?", "Думаете ли вы поступить к нам в будущем?"));
+
+        manager.addSurvey(poll);
+        manager.addSurvey(test);
+        manager.addSurvey(form);
+
+        manager.displaySurveys();
+    }
+}
