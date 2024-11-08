@@ -1,0 +1,11 @@
+class Test extends Survey {
+    public Test(String title, List<String> questions) {
+        super(title, questions);
+    }
+
+    @Override
+    protected void displayQuestions() {
+        System.out.println("Вопросы теста:");
+        collectAnswers(); 
+    }
+}
