@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Введите название книги: ");
+        String title = scanner.nextLine();
+
+        System.out.print("Введите автора книги: ");
+        String author = scanner.nextLine();
+
+        System.out.print("Введите жанр книги: ");
+        String genre = scanner.nextLine();
+
+        System.out.print("Введите количество страниц: ");
+        int pages = scanner.nextInt();
+        scanner.nextLine(); // Consume newline character
+
+        Book book = new BookBuilder()
+                .setTitle(title)
+                .setAuthor(author)
+                .setGenre(genre)
+                .setPages(pages)
+                .build();
+
+        System.out.println(book);
+        scanner.close();
+    }
+}
