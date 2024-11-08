@@ -1,0 +1,113 @@
+import java.io.*;
+import java.util.Properties;
+import java.util.Scanner;
+
+public class GameSettingsManager {
+
+    private static final String SETTINGS_FILE = "game_settings.properties";
+
+    private Properties settings;
+
+    public GameSettingsManager() {
+        settings = new Properties();
+        loadSettings();
+    }
+
+    
+    private void loadSettings() {
+        try (FileInputStream fis = new FileInputStream(SETTINGS_FILE)) {
+            settings.load(fis);
+        } catch (IOException e) {
+            
+            saveSettings();
+        }
+    }
+    
+    public void saveSettings() {
+        try (FileOutputStream fos = new FileOutputStream(SETTINGS_FILE)) {
+            settings.store(fos, "Game Settings");
+        } catch (IOException e) {
+            System.err.println("Ошибка при сохранении настроек: " + e.getMessage());
+        }
+    }
+
+    // Методы для получения и установки настроек
+
+    // Графика
+    public int getResolutionWidth() {
+        return Integer.parseInt(settings.getProperty("resolution.width", "1920"));
+    }
+
+    public void setResolutionWidth(int width) {
+        settings.setProperty("resolution.width", String.valueOf(width));
+    }
+
+    public int getResolutionHeight() {
+        return Integer.parseInt(settings.getProperty("resolution.height", "1080"));
+    }
+
+    public void setResolutionHeight(int height) {
+        settings.setProperty("resolution.height", String.valueOf(height));
+    }
+
+    public boolean isFullscreen() {
+        return Boolean.parseBoolean(settings.getProperty("fullscreen", "false"));
+    }
+
+    public void setFullscreen(boolean fullscreen) {
+        settings.setProperty("fullscreen", String.valueOf(fullscreen));
+    }
+
+    public String getControlScheme() {
+        return settings.getProperty("control.scheme", "default");
+    }
+
+    public void setControlScheme(String scheme) {
+        settings.setProperty("control.scheme", scheme);
+    }
+
+    public int getSensitivity() {
+        return Integer.parseInt(settings.getProperty("control.sensitivity", "5"));
+    }
+
+    public void setSensitivity(int sensitivity) {
+        settings.setProperty("control.sensitivity", String.valueOf(sensitivity));
+    }
+
+    public static void main(String[] args) {
+        GameSettingsManager settingsManager = new GameSettingsManager();
+        Scanner scanner = new Scanner(System.in);
+
+       
+        System.out.print("Введите ширину разрешения: ");
+        int width = scanner.nextInt();
+        scanner.nextLine(); // Consume newline character
+
+        System.out.print("Введите высоту разрешения: ");
+        int height = scanner.nextInt();
+        scanner.nextLine(); // Consume newline character
+
+        System.out.print("Полный экран (true/false): ");
+        boolean fullscreen = Boolean.parseBoolean(scanner.nextLine());
+
+        
+        System.out.print("Чувствительность: ");
+        int sensitivity = scanner.nextInt();
+        scanner.nextLine(); 
+
+  
+        settingsManager.setResolutionWidth(width);
+        settingsManager.setResolutionHeight(height);
+        settingsManager.setFullscreen(fullscreen);
+        settingsManager.setSensitivity(sensitivity);
+        
+        settingsManager.saveSettings();
+        
+        System.out.println("Текущие настройки:");
+        System.out.println("Разрешение: " + settingsManager.getResolutionWidth() + "x" + settingsManager.getResolutionHeight());
+        System.out.println("Полный экран: " + settingsManager.isFullscreen());
+        System.out.println("Чувствительность: " + settingsManager.getSensitivity());
+
+        scanner.close();
+    }
+}
