@@ -1,0 +1,35 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+
+class GameSession {
+    private int sessionId;
+    private ConcurrentHashMap<Integer, GameObject> gameObjects;
+    private List<Player> players;
+
+    public GameSession(int sessionId) {
+        this.sessionId = sessionId;
+        this.gameObjects = new ConcurrentHashMap<>();
+        this.players = new ArrayList<>();
+    }
+
+    public void addGameObject(GameObject gameObject) {
+        gameObjects.put(gameObject.getId(), gameObject);
+    }
+
+    public void addPlayer(Player player) {
+        players.add(player);
+    }
+
+    public void displayGameObjects() {
+        System.out.println("Игровые объекты в сессии " + sessionId + ":");
+        gameObjects.forEach((key, value) -> System.out.println(value.toString()));
+    }
+
+    public void displayPlayers() {
+        System.out.println("Игроки в сессии " + sessionId + ":");
+        for (Player player : players) {
+            System.out.println(player.toString());
+        }
+    }
+}
