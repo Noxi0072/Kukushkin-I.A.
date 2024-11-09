@@ -1,0 +1,24 @@
+
+class GameObject {
+    private int id;
+    private String name;
+
+    public GameObject(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Игровой объект[id=" + id + ", название='" + name + "']";
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+}
+
