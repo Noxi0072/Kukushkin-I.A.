@@ -1,0 +1,56 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class GameController {
+    private List<GameSession> gameSessions;
+
+    public GameController() {
+        this.gameSessions = new ArrayList<>();
+    }
+
+    public void createGameSession() {
+        int sessionId = gameSessions.size();
+        GameSession newSession = new GameSession(sessionId);
+        gameSessions.add(newSession);
+        System.out.println("Создана новая игровая сессия с id " + sessionId + ".");
+    }
+
+    public void addGameObjectToSession(int sessionId, GameObject gameObject) {
+        if (sessionId >= 0 && sessionId < gameSessions.size()) {
+            GameSession session = gameSessions.get(sessionId);
+            session.addGameObject(gameObject);
+            System.out.println("Игровой объект добавлен в сессию с id " + sessionId + ".");
+        } else {
+            System.out.println("Игровая сессия с указанным id не найдена.");
+        }
+    }
+
+    public void addPlayerToSession(int sessionId, Player player) {
+        if (sessionId >= 0 && sessionId < gameSessions.size()) {
+            GameSession session = gameSessions.get(sessionId);
+            session.addPlayer(player);
+            System.out.println("Игрок добавлен в сессию с id " + sessionId + ".");
+        } else {
+            System.out.println("Игровая сессия с указанным id не найдена.");
+        }
+    }
+
+    public void displayGameObjectsInSession(int sessionId) {
+        if (sessionId >= 0 && sessionId < gameSessions.size()) {
+            GameSession session = gameSessions.get(sessionId);
+            session.displayGameObjects();
+        } else {
+            System.out.println("Игровая сессия с указанным id не найдена.");
+        }
+    }
+
+    public void displayPlayersInSession(int sessionId) {
+        if (sessionId >= 0 && sessionId < gameSessions.size()) {
+            GameSession session = gameSessions.get(sessionId);
+            session.displayPlayers();
+        } else {
+            System.out.println("Игровая сессия с указанным id не найдена.");
+        }
+    }
+}
+
