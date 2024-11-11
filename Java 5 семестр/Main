@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Введите имя клиента: ");
+        String customerName = scanner.nextLine();
+        System.out.print("Введите адрес доставки: ");
+        String deliveryAddress = scanner.nextLine();
+
+        Order originalOrder = new Order(customerName, deliveryAddress);
+        System.out.println("Исходный заказ: " + originalOrder);
+
+        System.out.print("Введите новый адрес доставки для клона: ");
+        String newAddress = scanner.nextLine();
+
+        Order clonedOrder = originalOrder.clone();
+        clonedOrder.setDeliveryAddress(newAddress);
+
+        System.out.println("Клонированный заказ: " + clonedOrder);
+
+
+        scanner.close();
+    }
+}
+
