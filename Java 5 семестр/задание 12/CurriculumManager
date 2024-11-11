@@ -1,0 +1,35 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+class CurriculumManager {
+    private Map<String, Program> programs = new HashMap<>();
+
+    public List<Program> getPrograms() {
+        return new ArrayList<>(programs.values());
+    }
+
+    public void addProgram(String programName) {
+        programs.put(programName, new Program(programName));
+    }
+
+    public void addCourseToProgram(String programName, String courseName) {
+        Program program = programs.get(programName);
+        if (program != null) {
+            program.addCourse(new Course(courseName));
+        }
+    }
+
+    public void addSubjectToCourse(String programName, String courseName, String subjectName) {
+        Program program = programs.get(programName);
+        if (program != null) {
+            for (Course course : program.courses) {
+                if (course.getName().equals(courseName)) {
+                    course.addComponent(new Subject(subjectName));
+                    return;
+                }
+            }
+        }
+    }
+}
