@@ -1,0 +1,11 @@
+interface HotelReservationSystem {
+    boolean checkRoomAvailability(String hotelName, String roomType);
+}
+
+class HotelReservationSystemImpl implements HotelReservationSystem {
+    @Override
+    public boolean checkRoomAvailability(String hotelName, String roomType) {
+        return false;
+    }
+    
+}
