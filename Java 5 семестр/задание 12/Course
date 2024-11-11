@@ -1,0 +1,29 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class Course implements CurriculumComponent {
+    private String name;
+    private List<CurriculumComponent> components = new ArrayList<>();
+
+    public Course(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void addComponent(CurriculumComponent component) {
+        components.add(component);
+    }
+
+    @Override
+    public String getDescription() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Курс: ").append(name).append("\n");
+        for (CurriculumComponent component : components) {
+            sb.append("   ").append(component.getDescription()).append("\n");
+        }
+        return sb.toString();
+    }
+}
