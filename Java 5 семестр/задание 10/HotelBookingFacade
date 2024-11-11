@@ -1,0 +1,3 @@
+interface HotelBookingFacade {
+    BookingResult bookRoom(String hotelName, String roomType, String arrivalDate, String departureDate, String guestName, String creditCard);
+}
