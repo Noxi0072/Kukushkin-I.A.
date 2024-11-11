@@ -1,0 +1,107 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Main extends JFrame {
+    private HotelBookingFacade bookingFacade;
+    private JLabel hotelNameLabel;
+    private JComboBox<String> hotelComboBox;
+    private JLabel roomTypeLabel;
+    private JComboBox<String> roomTypeComboBox;
+    private JLabel arrivalDateLabel;
+    private JTextField arrivalDateField;
+    private JLabel departureDateLabel;
+    private JTextField departureDateField;
+    private JLabel guestNameLabel;
+    private JTextField guestNameField;
+    private JLabel creditCardLabel;
+    private JTextField creditCardField;
+
+    private JButton bookButton;
+
+    public Main(HotelBookingFacade bookingFacade) {
+        super("Бронирование номера в отеле");
+        this.bookingFacade = bookingFacade;
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 350);
+        setLocationRelativeTo(null);
+        setLayout(new GridLayout(8, 2, 10, 10));
+
+        // Название отеля
+        hotelNameLabel = new JLabel("Название отеля:");
+        hotelComboBox = new JComboBox<>(new String[]{"Grand Hotel", "Hilton", "Marriott"});
+        add(hotelNameLabel);
+        add(hotelComboBox);
+
+        // Тип номера
+        roomTypeLabel = new JLabel("Тип номера:");
+        roomTypeComboBox = new JComboBox<>(new String[]{"Single", "Double", "Suite"});
+        add(roomTypeLabel);
+        add(roomTypeComboBox);
+
+        // Дата заезда
+        arrivalDateLabel = new JLabel("Дата заезда:");
+        arrivalDateField = new JTextField();
+        add(arrivalDateLabel);
+        add(arrivalDateField);
+
+        // Дата выезда
+        departureDateLabel = new JLabel("Дата выезда:");
+        departureDateField = new JTextField();
+        add(departureDateLabel);
+        add(departureDateField);
+
+        // Имя гостя
+        guestNameLabel = new JLabel("Имя гостя:");
+        guestNameField = new JTextField();
+        add(guestNameLabel);
+        add(guestNameField);
+
+        // Номер кредитной карты
+        creditCardLabel = new JLabel("Номер кредитной карты:");
+        creditCardField = new JTextField();
+        add(creditCardLabel);
+        add(creditCardField);
+
+        // Кнопка "Забронировать"
+        bookButton = new JButton("Забронировать");
+        bookButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                bookRoom();
+            }
+        });
+
+        add(new JLabel()); // Пустое поле для отступа
+        add(bookButton);
+
+        setVisible(true);
+    }
+
+    private void bookRoom() {
+        String hotelName = (String) hotelComboBox.getSelectedItem();
+        String roomType = (String) roomTypeComboBox.getSelectedItem();
+        String arrivalDate = arrivalDateField.getText();
+        String departureDate = departureDateField.getText();
+        String guestName = guestNameField.getText();
+        String creditCard = creditCardField.getText();
+
+        BookingResult result = bookingFacade.bookRoom(hotelName, roomType, arrivalDate, departureDate, guestName, creditCard);
+        String message = "";
+
+        if (result == BookingResult.BOOKING_SUCCESSFUL) {
+            message = "Бронирование успешно!";
+        } else if (result == BookingResult.ROOM_NOT_AVAILABLE) {
+            message = "К сожалению, номер не доступен.";
+        } else if (result == BookingResult.PAYMENT_FAILED) {
+            message = "Оплата не прошла.";
+        }
+
+        JOptionPane.showMessageDialog(this, message, "Результат", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new Main(new HotelBookingFacadeImpl(new HotelReservationSystemImpl(), new PaymentSystemImpl())));
+    }
+}
