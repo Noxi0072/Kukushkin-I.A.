@@ -1,0 +1,4 @@
+interface CurriculumComponent {
+    String getName();
+    String getDescription();
+}
