@@ -1,0 +1,5 @@
+enum BookingResult {
+    BOOKING_SUCCESSFUL,
+    ROOM_NOT_AVAILABLE,
+    PAYMENT_FAILED
+}
