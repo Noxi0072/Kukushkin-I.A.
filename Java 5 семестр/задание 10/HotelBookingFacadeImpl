@@ -1,0 +1,12 @@
+class HotelBookingFacadeImpl implements HotelBookingFacade {
+
+    public HotelBookingFacadeImpl(HotelReservationSystem hotelReservationSystem, PaymentSystem paymentSystem) {
+    }
+
+    @Override
+    public BookingResult bookRoom(String hotelName, String roomType, String arrivalDate, String departureDate, String guestName, String creditCard) {
+
+        return BookingResult.BOOKING_SUCCESSFUL;
+    }
+
+}
