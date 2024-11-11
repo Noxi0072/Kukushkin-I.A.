@@ -1,0 +1,64 @@
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        CurriculumManager curriculumManager = new CurriculumManager();
+
+        while (true) {
+            System.out.println("Выберите действие:");
+            System.out.println("1. Добавить программу");
+            System.out.println("2. Добавить курс");
+            System.out.println("3. Добавить предмет");
+            System.out.println("4. Вывести учебный план");
+            System.out.println("5. Выход");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline character
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Введите название программы: ");
+                    String programName = scanner.nextLine();
+                    curriculumManager.addProgram(programName);
+                    break;
+                case 2:
+                    System.out.print("Введите название программы: ");
+                    String programName2 = scanner.nextLine();
+                    System.out.print("Введите название курса: ");
+                    String courseName = scanner.nextLine();
+                    curriculumManager.addCourseToProgram(programName2, courseName);
+                    break;
+                case 3:
+                    System.out.print("Введите название программы: ");
+                    String programName3 = scanner.nextLine();
+                    System.out.print("Введите название курса: ");
+                    String courseName2 = scanner.nextLine();
+                    System.out.print("Введите название предмета: ");
+                    String subjectName = scanner.nextLine();
+                    curriculumManager.addSubjectToCourse(programName3, courseName2, subjectName);
+                    break;
+                case 4:
+                    for (Program program : curriculumManager.getPrograms()) {
+                        System.out.println(program.getDescription());
+                    }
+                    break;
+                case 5:
+                    scanner.close();
+                    System.out.println("Выход из программы.");
+                    return;
+                default:
+                    System.out.println("Неверный выбор.");
+            }
+        }
+    }
+}
+
+
+
+
+
+
