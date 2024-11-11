@@ -1,0 +1,17 @@
+class Subject implements CurriculumComponent {
+    private String name;
+
+    public Subject(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String getDescription() {
+        return "Предмет: " + name;
+    }
+}
