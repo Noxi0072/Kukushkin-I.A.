@@ -1,0 +1,11 @@
+interface PaymentSystem {
+    boolean processPayment(String creditCardNumber);
+}
+
+class PaymentSystemImpl implements PaymentSystem {
+    @Override
+    public boolean processPayment(String creditCardNumber) {
+        return false;
+    }
+   
+}
